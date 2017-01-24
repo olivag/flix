@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 Movie.create!([
   {
     title: 'Iron Man',
@@ -76,7 +68,7 @@ Movie.create!([
     description: 
     %{
       Patience Philips seems destined to spend her life apologizing for taking up space. 
-      Despite her artistic ability&mdash;she has a more than respectable career as a graphic 
+      Despite her artistic ability-she has a more than respectable career as a graphic 
       designer.
     }.squish,
     image_file_name: "catwoman.jpg",
