@@ -4599,3 +4599,572 @@ Completed 200 OK in 18ms (Views: 15.5ms | ActiveRecord: 0.2ms)
   [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/movies" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (released_on <= '2017-01-26 19:02:42.331316') ORDER BY released_on desc[0m
+  Rendered movies/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 217ms (Views: 201.4ms | ActiveRecord: 0.6ms)
+Started GET "/movies/new" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#new as HTML
+  Rendering movies/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered movies/_form.html.erb (23.2ms)
+  Rendered movies/new.html.erb within layouts/application (24.3ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 48ms (Views: 31.5ms | ActiveRecord: 0.2ms)
+Started POST "/movies" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"New Movie Title", "description"=>"Superheroes saving the world from villains", "rating"=>"PG-13", "released_on(1i)"=>"2016", "released_on(2i)"=>"1", "released_on(3i)"=>"26", "total_gross"=>"75000000", "duration"=>"123 min", "image_file_name"=>"movie.png", "cast"=>"The award-winning cast", "director"=>"The ever-creative director"}, "commit"=>"Create Movie"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "New Movie Title"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf7bf3b320,'0.75E8',9(18)>], ["created_at", 2017-01-26 19:02:42 UTC], ["updated_at", 2017-01-26 19:02:42 UTC], ["description", "Superheroes saving the world from villains"], ["released_on", Tue, 26 Jan 2016], ["cast", "The award-winning cast"], ["director", "The ever-creative director"], ["duration", "123 min"], ["image_file_name", "movie.png"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/movies/1
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+Started GET "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "reviews" WHERE "reviews"."movie_id" = ? LIMIT ?) subquery_for_count[0m  [["movie_id", 1], ["LIMIT", 2]]
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered reviews/_form.html.erb (5.2ms)
+  Rendered movies/show.html.erb within layouts/application (14.5ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 53ms (Views: 20.4ms | ActiveRecord: 0.9ms)
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/movies/new" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#new as HTML
+  Rendering movies/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered movies/_form.html.erb (22.3ms)
+  Rendered movies/new.html.erb within layouts/application (23.3ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 31ms (Views: 30.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "movies"[0m
+Started POST "/movies" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"", "description"=>"", "rating"=>"", "released_on(1i)"=>"2017", "released_on(2i)"=>"1", "released_on(3i)"=>"26", "total_gross"=>"", "duration"=>"", "image_file_name"=>"", "cast"=>"", "director"=>""}, "commit"=>"Create Movie"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering movies/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (1.5ms)
+  Rendered movies/_form.html.erb (6.2ms)
+  Rendered movies/new.html.erb within layouts/application (7.3ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "movies"[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf7a0e3af8,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:42 UTC], ["updated_at", 2017-01-26 19:02:42 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "reviews" WHERE "reviews"."movie_id" = ? LIMIT ?) subquery_for_count[0m  [["movie_id", 1], ["LIMIT", 2]]
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered reviews/_form.html.erb (3.2ms)
+  Rendered movies/show.html.erb within layouts/application (7.5ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 17ms (Views: 14.5ms | ActiveRecord: 0.2ms)
+Started GET "/movies/1/reviews/new" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by ReviewsController#new as HTML
+  Parameters: {"movie_id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reviews/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered reviews/_form.html.erb (3.5ms)
+  Rendered reviews/new.html.erb within layouts/application (4.7ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 24ms (Views: 12.3ms | ActiveRecord: 0.1ms)
+Started POST "/movies/1/reviews" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "review"=>{"name"=>"Roger Ebert", "stars"=>"3", "comment"=>"I laughed, I cried, I spilled my popcorn!"}, "commit"=>"Post Review", "movie_id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "stars", "comment", "movie_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Roger Ebert"], ["stars", 3], ["comment", "I laughed, I cried, I spilled my popcorn!"], ["movie_id", 1], ["created_at", 2017-01-26 19:02:42 UTC], ["updated_at", 2017-01-26 19:02:42 UTC]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/movies/1/reviews
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+Started GET "/movies/1/reviews" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"movie_id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reviews/index.html.erb within layouts/application
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  Rendered reviews/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 13ms (Views: 9.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf7b0f8e98,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:42 UTC], ["updated_at", 2017-01-26 19:02:42 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies/1/reviews/new" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by ReviewsController#new as HTML
+  Parameters: {"movie_id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reviews/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.6ms)
+  Rendered reviews/_form.html.erb (4.5ms)
+  Rendered reviews/new.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_sidebar.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 16ms (Views: 13.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+Started POST "/movies/1/reviews" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by ReviewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "review"=>{"name"=>"", "comment"=>""}, "commit"=>"Post Review", "movie_id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering reviews/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (1.5ms)
+  Rendered reviews/_form.html.erb (5.7ms)
+  Rendered reviews/new.html.erb within layouts/application (7.1ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_flashes.html.erb (0.2ms)
+  Rendered layouts/_sidebar.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (4.2ms)
+Completed 200 OK in 25ms (Views: 20.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf7d14b4c0,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:42 UTC], ["updated_at", 2017-01-26 19:02:42 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "reviews" WHERE "reviews"."movie_id" = ? LIMIT ?) subquery_for_count[0m  [["movie_id", 1], ["LIMIT", 2]]
+  Rendered shared/_errors.html.erb (0.5ms)
+  Rendered reviews/_form.html.erb (3.8ms)
+  Rendered movies/show.html.erb within layouts/application (8.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 18ms (Views: 15.4ms | ActiveRecord: 0.2ms)
+Started DELETE "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReview Load (0.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/movies
+Completed 302 Found in 3ms (ActiveRecord: 0.9ms)
+Started GET "/movies" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (released_on <= '2017-01-26 19:02:42.905627') ORDER BY released_on desc[0m
+  Rendered movies/index.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_flashes.html.erb (0.4ms)
+  Rendered layouts/_sidebar.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (16.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf7a172578,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:42 UTC], ["updated_at", 2017-01-26 19:02:42 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "reviews" WHERE "reviews"."movie_id" = ? LIMIT ?) subquery_for_count[0m  [["movie_id", 1], ["LIMIT", 2]]
+  Rendered shared/_errors.html.erb (0.6ms)
+  Rendered reviews/_form.html.erb (4.3ms)
+  Rendered movies/show.html.erb within layouts/application (9.6ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_sidebar.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 21ms (Views: 18.4ms | ActiveRecord: 0.2ms)
+Started GET "/movies/1/edit" for 127.0.0.1 at 2017-01-26 14:02:42 -0500
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/edit.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.6ms)
+  Rendered movies/_form.html.erb (7.8ms)
+  Rendered movies/edit.html.erb within layouts/application (9.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 52ms (Views: 17.9ms | ActiveRecord: 0.1ms)
+Started PATCH "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Updated Movie Title", "description"=>"Tony Stark builds an armored suit to fight the throes of evil", "rating"=>"PG-13", "released_on(1i)"=>"2008", "released_on(2i)"=>"5", "released_on(3i)"=>"2", "total_gross"=>"318412101.0", "duration"=>"126 min", "image_file_name"=>"ironman.jpg", "cast"=>"Robert Downey Jr., Gwyneth Paltrow and Terrence Howard", "director"=>"Jon Favreau"}, "commit"=>"Update Movie", "id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "movies" SET "title" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["title", "Updated Movie Title"], ["updated_at", 2017-01-26 19:02:43 UTC], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/movies/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+Started GET "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "reviews" WHERE "reviews"."movie_id" = ? LIMIT ?) subquery_for_count[0m  [["movie_id", 1], ["LIMIT", 2]]
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered reviews/_form.html.erb (2.6ms)
+  Rendered movies/show.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 22ms (Views: 12.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (5.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf80415f68,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies/1/edit" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/edit.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered movies/_form.html.erb (4.9ms)
+  Rendered movies/edit.html.erb within layouts/application (6.0ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+Started PATCH "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>" ", "description"=>"Tony Stark builds an armored suit to fight the throes of evil", "rating"=>"PG-13", "released_on(1i)"=>"2008", "released_on(2i)"=>"5", "released_on(3i)"=>"2", "total_gross"=>"318412101.0", "duration"=>"126 min", "image_file_name"=>"ironman.jpg", "cast"=>"Robert Downey Jr., Gwyneth Paltrow and Terrence Howard", "director"=>"Jon Favreau"}, "commit"=>"Update Movie", "id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering movies/edit.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.5ms)
+  Rendered movies/_form.html.erb (4.9ms)
+  Rendered movies/edit.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.2ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf8052f4d0,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Superman"], ["rating", "PG"], ["total_gross", #<BigDecimal:7fbf80534958,'0.134218018E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Clark Kent grows up to be the greatest super-hero"], ["released_on", Fri, 15 Dec 1978], ["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["director", "Richard Donner"], ["duration", "143 min"], ["image_file_name", "superman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Spider-Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf80547878,'0.403706375E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Peter Parker gets bit by a genetically modified spider"], ["released_on", Fri, 03 May 2002], ["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["director", "Sam Raimi"], ["duration", "121 min"], ["image_file_name", "spiderman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (released_on <= '2017-01-26 19:02:43.112503') ORDER BY released_on desc[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."stars") FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."stars") FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."stars") FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 2]]
+  Rendered movies/index.html.erb within layouts/application (6.7ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.2ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf805848e0,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Sun, 26 Feb 2017], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (released_on <= '2017-01-26 19:02:43.143990') ORDER BY released_on desc[0m
+  Rendered movies/index.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf805ffba8,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "stars", "comment", "movie_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Roger Ebert"], ["stars", 3], ["comment", "I laughed, I cried, I spilled my popcorn!"], ["movie_id", 1], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "stars", "comment", "movie_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Gene Siskel"], ["stars", 3], ["comment", "I laughed, I cried, I spilled my popcorn!"], ["movie_id", 1], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Superman"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf806251f0,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "stars", "comment", "movie_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Peter Travers"], ["stars", 3], ["comment", "I laughed, I cried, I spilled my popcorn!"], ["movie_id", 2], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies/1/reviews" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"movie_id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering reviews/index.html.erb within layouts/application
+  [1m[36mReview Load (0.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  Rendered reviews/index.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.2ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (52.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf7a303c98,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "reviews" WHERE "reviews"."movie_id" = ? LIMIT ?) subquery_for_count[0m  [["movie_id", 1], ["LIMIT", 2]]
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered reviews/_form.html.erb (2.9ms)
+  Rendered movies/show.html.erb within layouts/application (6.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.2ms)
+Started GET "/movies" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (released_on <= '2017-01-26 19:02:43.250200') ORDER BY released_on desc[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."stars") FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  Rendered movies/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.2ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf806cce28,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#index as HTML
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE (released_on <= '2017-01-26 19:02:43.265593') ORDER BY released_on desc[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."stars") FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  Rendered movies/index.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_header.html.erb (0.3ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.1ms)
+Started GET "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "reviews" WHERE "reviews"."movie_id" = ? LIMIT ?) subquery_for_count[0m  [["movie_id", 1], ["LIMIT", 2]]
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered reviews/_form.html.erb (2.5ms)
+  Rendered movies/show.html.erb within layouts/application (5.6ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf8103ae60,'0.3E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "reviews" WHERE "reviews"."movie_id" = ? LIMIT ?) subquery_for_count[0m  [["movie_id", 1], ["LIMIT", 2]]
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered reviews/_form.html.erb (2.5ms)
+  Rendered movies/show.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf811c3048,'0.6E8',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "reviews" WHERE "reviews"."movie_id" = ? LIMIT ?) subquery_for_count[0m  [["movie_id", 1], ["LIMIT", 2]]
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered reviews/_form.html.erb (2.8ms)
+  Rendered movies/show.html.erb within layouts/application (6.2ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 15ms (Views: 12.4ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf812290c8,'0.4E8',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/movies/1" for 127.0.0.1 at 2017-01-26 14:02:43 -0500
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering movies/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "reviews" WHERE "reviews"."movie_id" = ? LIMIT ?) subquery_for_count[0m  [["movie_id", 1], ["LIMIT", 2]]
+  Rendered shared/_errors.html.erb (0.3ms)
+  Rendered reviews/_form.html.erb (3.0ms)
+  Rendered movies/show.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_header.html.erb (0.2ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 15ms (Views: 12.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf7d44bad0,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "stars", "comment", "movie_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Roger Ebert"], ["stars", 3], ["comment", "I laughed, I cried, I spilled my popcorn!"], ["movie_id", 1], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mReview Load (0.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "reviews" WHERE "reviews"."id" = ?[0m  [["id", 1]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf812a69b0,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "stars", "comment", "movie_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Roger Ebert"], ["stars", 1], ["comment", "I laughed, I cried, I spilled my popcorn!"], ["movie_id", 1], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "stars", "comment", "movie_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Roger Ebert"], ["stars", 3], ["comment", "I laughed, I cried, I spilled my popcorn!"], ["movie_id", 1], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "stars", "comment", "movie_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Roger Ebert"], ["stars", 5], ["comment", "I laughed, I cried, I spilled my popcorn!"], ["movie_id", 1], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."stars") FROM "reviews" WHERE "reviews"."movie_id" = ?[0m  [["movie_id", 1]]
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf7d3d3580,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "total_gross", "created_at", "updated_at", "description", "released_on", "cast", "director", "duration", "image_file_name") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["rating", "PG-13"], ["total_gross", #<BigDecimal:7fbf7d3b9270,'0.318412101E9',9(36)>], ["created_at", 2017-01-26 19:02:43 UTC], ["updated_at", 2017-01-26 19:02:43 UTC], ["description", "Tony Stark builds an armored suit to fight the throes of evil"], ["released_on", Fri, 02 May 2008], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["director", "Jon Favreau"], ["duration", "126 min"], ["image_file_name", "ironman.jpg"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m

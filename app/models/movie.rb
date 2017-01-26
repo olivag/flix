@@ -29,7 +29,11 @@ class Movie < ApplicationRecord
   end
 
   def flop?
-    total_gross.blank? || total_gross < 50000000
+    (total_gross.blank? || total_gross < 50000000) && !cult_movie?
+  end
+
+  def cult_movie?
+    reviews.count > 50 && reviews.average(:stars) >= 4
   end
 
   def average_stars

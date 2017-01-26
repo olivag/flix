@@ -1,0 +1,15 @@
+<ol id="reviews">
+  <% reviews.each do |review| %>
+    <li>
+      <span class="review"><%= pluralize(review.stars, 'star') %></span>
+      <span class="user">by <%= review.name %></span>
+      <span class="date"><%= time_ago_in_words(review.created_at) %> ago</span>
+      <p>
+        &quot;<%= review.comment %>&quot;
+      </p>
+      <p><%= link_to "Delete", [review.movie, review], method: :delete %> | 
+         <%= link_to "Edit", edit_movie_review_path([review.movie, review]) %>
+      </p>
+    </li>
+  <% end %>
+</ol>
