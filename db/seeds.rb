@@ -95,3 +95,11 @@ Movie.create!([
     total_gross: 387_623_910
   }
 ])
+
+movie = Movie.find_by(title: "Iron Man")
+movie.reviews.create!(name: "Roger Ebert", stars: 3, comment: "I laughed, I cried, I spilled my popcorn!", location: "Springfield, VA")
+movie.reviews.create!(name: "Gene Siskel", stars: 5, comment: "I'm a better reviewer than he is.", location: "Springfield, NC")
+movie.reviews.create!(name: "Peter Travers", stars: 4, comment: "It's been years since a movie superhero was this fierce and this funny.", location: "Springfield, SC")
+
+movie = Movie.find_by(title: 'Superman')
+movie.reviews.create!(name: "Elvis Mitchell", stars: 5, comment: "It's a bird, it's a plane, it's a blockbuster!", location: "Springfield, NY")

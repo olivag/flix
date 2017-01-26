@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   RATINGS = %w(G PG PG-13 R NC-17)
 
@@ -30,5 +30,13 @@ class Movie < ApplicationRecord
 
   def flop?
     total_gross.blank? || total_gross < 50000000
+  end
+
+  def average_stars
+    reviews.average(:stars)
+  end
+
+  def recent_reviews
+    reviews.order('created_at desc').limit(2)
   end
 end
