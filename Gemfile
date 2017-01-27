@@ -28,14 +28,14 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'pg', '0.18.4'
 
 group :production do
   gem 'pg', '0.18.4'
 end
 
 group :development, :test do
-  gem 'sqlite3', '1.3.12'
+
   gem 'byebug',  '9.0.0', platform: :mri
   gem "rspec-rails", "3.5.0.beta3"
 end
