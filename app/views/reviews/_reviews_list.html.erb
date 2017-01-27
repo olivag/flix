@@ -8,8 +8,9 @@
         &quot;<%= review.comment %>&quot;
       </p>
       <p><%= link_to "Delete", [review.movie, review], method: :delete %> | 
-         <%= link_to "Edit", edit_movie_review_path([review.movie, review]) %>
-      </p>
+         <%= link_to "Edit", "/movies/#{review.movie.id}/reviews/#{review.id}/edit" %>
+      </p> <!-- edit_movie_review_path not working for edit link-->
+
     </li>
   <% end %>
 </ol>
