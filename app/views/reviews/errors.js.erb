@@ -1,0 +1,5 @@
+$("#list-errors-js").remove();
+$("#error-js").append("<%= j render 'shared/errors', object: @review%>");
+$('html, body').animate({
+  scrollTop: $('#error-js').offset().top
+}, 0);

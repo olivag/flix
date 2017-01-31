@@ -1,5 +1,46 @@
-<header>
-  <h1>Reviews for <%= link_to @movie.title, @movie %></h1>
-</header>
+<article id="movie" class="movie">
+  <header>
+    <h1>Reviews for <%= link_to @movie.title, @movie %></h1>
+  </header>
 
-<%= render 'reviews_list', reviews: @reviews %>
+  <ol id="reviews">
+    <%= render @reviews %>
+  </ol>
+  <p>
+    <%= link_to "Write Review", "#", class: 'button ok review', id: "write-review-link" %>
+  </p>
+
+  <section id="review-form">
+    <%= form_for([@movie, @movie.reviews.new], remote: true) do |f| %>
+      <section id="error-js">
+        <div id="list-errors-js"></div>
+      </section>
+      <fieldset>
+        <ol>
+          <li class="required">
+            <%= f.label :name %>
+            <%= f.text_field :name, size: 40, autofocus: true %>
+          </li>
+          <li class="required stars">
+            <%= f.label :stars %>
+            <% Review::STARS.each do |star| %>
+              <span class="star">
+                <%= f.radio_button :stars, star %> <%= star %>
+              </span>
+            <% end %>
+          </li>
+          <li class="required">
+            <%= f.label :comment %>
+            <%= f.text_area :comment, cols: 80, placeholder: "What did you think?" %>
+          </li>
+        </ol>
+        
+        <p>
+          <%= f.submit 'Post Review', id: "review-submit-btn" %>
+          <%= link_to "Cancel", "#", class: 'button', id: "review-cancel-button" %>
+        </p>
+      </fieldset>
+    <% end %>    
+  </section>
+
+</article>

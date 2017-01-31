@@ -39,15 +39,15 @@
 
     <h3>Recent Reviews</h3>
 
-    <%= render 'reviews/reviews_list', reviews: @movie.recent_reviews %>
+    <ol id="reviews">
+      <%= render @reviews %>
+    </ol>
 
     <p>
       Read all <%= link_to pluralize(@movie.reviews.count, "review"), 
                       movie_reviews_path(@movie) %>
     </p>
   <% end %>
-
-  <%= render 'reviews/form' %>
   
   <footer>
     <%= link_to "Write Review", new_movie_review_path(@movie), class: 'button ok review' %>
