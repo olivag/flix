@@ -14,4 +14,8 @@ class User < ApplicationRecord
     Digest::MD5::hexdigest(email.downcase)
   end                      
 
+  def self.authenticate(email, username, password)
+    user = User.find_by(email: email) || User.find_by(username: username)
+    user && user.authenticate(password)
+  end
 end

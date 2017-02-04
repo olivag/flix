@@ -7,6 +7,8 @@ describe "Viewing the list of users" do
     user2 = User.create!(user_attributes(name: "Moe",   email: "moe@example.com", username: "gohan"))
     user3 = User.create!(user_attributes(name: "Curly", email: "curly@example.com", username: "goku"))
 
+    sign_in(user1)
+    
     visit users_url
 
     expect(page).to have_link(user1.name)
