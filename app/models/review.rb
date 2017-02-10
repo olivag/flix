@@ -1,9 +1,9 @@
 class Review < ApplicationRecord
-  STARS = [1, 2, 3,4 ,5]
-
   belongs_to :movie
+  belongs_to :user
 
-  validates :name, presence: true
+  STARS = [1, 2, 3, 4, 5]
+
   validates :comment, length: { minimum: 4 }
   validates :stars, inclusion: { 
     in: STARS,

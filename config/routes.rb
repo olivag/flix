@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resources :genres
   get 'signin' => "sessions#new"
   resource :session
   
@@ -9,5 +11,6 @@ Rails.application.routes.draw do
   
   resources :movies do
     resources :reviews
+    resources :favorites
   end
 end

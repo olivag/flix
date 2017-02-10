@@ -96,10 +96,28 @@ Movie.create!([
   }
 ])
 
+user1 = User.create!(name: "Gerald", username: "gerald101", email: "ryumaster001@yahoo.com", password: "12345678", password_confirmation: "12345678", admin: true)
+user2 = User.create!(name: "Heidy", username: "heidy101", email: "heidy@yahoo.com", password: "12345678", password_confirmation: "12345678")
+
 movie = Movie.find_by(title: "Iron Man")
-movie.reviews.create!(name: "Roger Ebert", stars: 3, comment: "I laughed, I cried, I spilled my popcorn!", location: "Springfield, VA")
-movie.reviews.create!(name: "Gene Siskel", stars: 5, comment: "I'm a better reviewer than he is.", location: "Springfield, NC")
-movie.reviews.create!(name: "Peter Travers", stars: 4, comment: "It's been years since a movie superhero was this fierce and this funny.", location: "Springfield, SC")
+movie.reviews.create!(stars: 3, comment: "I laughed, I cried, I spilled my popcorn!", location: "Springfield, VA", user: user1)
+movie.reviews.create!(stars: 5, comment: "I'm a better reviewer than he is.", location: "Springfield, NC", user: user1)
+movie.reviews.create!(stars: 4, comment: "It's been years since a movie superhero was this fierce and this funny.", location: "Springfield, SC", user: user1)
+movie.favorites.create!(user: user1)
+movie.favorites.create!(user: user2)
 
 movie = Movie.find_by(title: 'Superman')
-movie.reviews.create!(name: "Elvis Mitchell", stars: 5, comment: "It's a bird, it's a plane, it's a blockbuster!", location: "Springfield, NY")
+movie.reviews.create!(stars: 5, comment: "It's a bird, it's a plane, it's a blockbuster!", location: "Springfield, NY", user: user2)
+movie.favorites.create!(user: user2)
+
+Genre.create!(name: "Action")
+Genre.create!(name: "Comedy")
+Genre.create!(name: "Drama")
+Genre.create!(name: "Romance")
+Genre.create!(name: "Thriller")
+Genre.create!(name: "Fantasy")
+Genre.create!(name: "Documentary")
+Genre.create!(name: "Adventure")
+Genre.create!(name: "Animation")
+Genre.create!(name: "Sci-Fi")
+

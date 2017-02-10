@@ -130,9 +130,11 @@ describe "A movie" do
   end
 
   it "deletes associated reviews" do
-    movie = Movie.create(movie_attributes)
+    admin = User.create!(user_attributes(admin: true))
 
-    movie.reviews.create(review_attributes)
+    movie = Movie.create!(movie_attributes)
+
+    movie.reviews.create!(review_attributes(user: admin))
 
     expect {
       movie.destroy
@@ -140,13 +142,27 @@ describe "A movie" do
   end
 
   it "calculates the average number of review stars" do
-    movie = Movie.create(movie_attributes)
+    user = User.create!(user_attributes)
 
-    movie.reviews.create(review_attributes(stars: 1))
-    movie.reviews.create(review_attributes(stars: 3))
-    movie.reviews.create(review_attributes(stars: 5))
+    movie = Movie.create!(movie_attributes)
+
+    movie.reviews.create!(review_attributes(stars: 1, user: user))
+    movie.reviews.create!(review_attributes(stars: 3, user: user))
+    movie.reviews.create!(review_attributes(stars: 5, user: user))
     
     expect(movie.average_stars).to eq(3)
+  end
+
+  it "has fans" do
+    movie = Movie.new(movie_attributes)
+    fan1 = User.new(user_attributes(email: "larry@example.com"))
+    fan2 = User.new(user_attributes(email: "moe@example.com"))
+
+    movie.favorites.new(user: fan1)
+    movie.favorites.new(user: fan2)
+
+    expect(movie.fans).to include(fan1)
+    expect(movie.fans).to include(fan2)
   end
 end
     

@@ -39,6 +39,12 @@
         <%= f.label :director %>
         <%= f.text_field :director %>
       </li>
+      <li>
+        <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |b| %>
+          <%= b.label(:"data-value" => b.value, class: "label-checkbox") { b.check_box(class: "input-checkbox") + b.text } %>
+          <br>
+        <% end %>
+      </li>
     </ol>
     <p>
       <%= f.submit %>
