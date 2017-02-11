@@ -77,7 +77,7 @@ Movie.create!([
     duration: "101 min",
     director: "Jean-Christophe 'Pitof' Comar",
     rating: "PG-13",
-    total_gross: 40200000.00
+    total_gross: 40_200_000
   },
   {
     title: 'Batman vs. Godzilla',
