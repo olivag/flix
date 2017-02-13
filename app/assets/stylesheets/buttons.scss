@@ -60,3 +60,7 @@ input[type="submit"].button {
     background: $primary-background-color;
   }
 }
+
+a .button:hover {
+  background-color: green;
+}

@@ -14,6 +14,9 @@ class User < ApplicationRecord
                       uniqueness: { case_sensitive: false },
                       format: /\A[A-Z0-9]+\z/i
 
+  scope :by_name, ->    { order(name: :asc) }
+  scope :not_admins, -> { by_name.where(admin: false) }
+
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)
   end                      
@@ -21,5 +24,9 @@ class User < ApplicationRecord
   def self.authenticate(email, username, password)
     user = User.find_by(email: email) || User.find_by(username: username)
     user && user.authenticate(password)
+  end
+
+  def to_param
+    username
   end
 end

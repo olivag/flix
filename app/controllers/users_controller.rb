@@ -3,11 +3,11 @@ class UsersController < ApplicationController
   before_action :require_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.not_admins
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by!(username: params[:id])
     @reviews = @user.reviews
     @favorite_movies = @user.favorite_movies
   end
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     end
 
     def require_correct_user
-      @user = User.find(params[:id])
+      @user = User.find_by!(username: params[:id])
       redirect_to root_url unless current_user?(@user)
     end
 end

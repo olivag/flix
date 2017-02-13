@@ -168,7 +168,7 @@ describe "A movie" do
   context "upcoming query" do
     it "returns the movies with a released on date in the future" do
       movie1 = Movie.create!(movie_attributes(released_on: 3.months.ago))
-      movie2 = Movie.create!(movie_attributes(released_on: 3.months.from_now))
+      movie2 = Movie.create!(movie_attributes(title: "Movie 2", released_on: 3.months.from_now))
 
       expect(Movie.upcoming).to eq([movie2])
     end
@@ -177,8 +177,8 @@ describe "A movie" do
   context "rated query" do
     it "returns released movies with the specified rating" do
       movie1 = Movie.create!(movie_attributes(released_on: 3.months.ago, rating: "PG"))
-      movie2 = Movie.create!(movie_attributes(released_on: 3.months.ago, rating: "PG-13"))
-      movie3 = Movie.create!(movie_attributes(released_on: 1.month.from_now, rating: "PG"))
+      movie2 = Movie.create!(movie_attributes(title: "Movie 2", released_on: 3.months.ago, rating: "PG-13"))
+      movie3 = Movie.create!(movie_attributes(title: "Movie 3", released_on: 1.month.from_now, rating: "PG"))
 
       expect(Movie.rated("PG")).to eq([movie1])
     end
@@ -186,13 +186,13 @@ describe "A movie" do
 
   context "recent query" do
     before do
-      @movie1 = Movie.create!(movie_attributes(released_on: 3.months.ago))
-      @movie2 = Movie.create!(movie_attributes(released_on: 2.months.ago))
-      @movie3 = Movie.create!(movie_attributes(released_on: 1.month.ago))
-      @movie4 = Movie.create!(movie_attributes(released_on: 1.week.ago))
-      @movie5 = Movie.create!(movie_attributes(released_on: 1.day.ago))
-      @movie6 = Movie.create!(movie_attributes(released_on: 1.hour.ago))
-      @movie7 = Movie.create!(movie_attributes(released_on: 1.day.from_now))
+      @movie1 = Movie.create!(movie_attributes(title: "Movie 1", released_on: 3.months.ago))
+      @movie2 = Movie.create!(movie_attributes(title: "Movie 2", released_on: 2.months.ago))
+      @movie3 = Movie.create!(movie_attributes(title: "Movie 3", released_on: 1.month.ago))
+      @movie4 = Movie.create!(movie_attributes(title: "Movie 4", released_on: 1.week.ago))
+      @movie5 = Movie.create!(movie_attributes(title: "Movie 5", released_on: 2.days.ago))
+      @movie6 = Movie.create!(movie_attributes(title: "Movie 6", released_on: 1.day.ago))
+      @movie7 = Movie.create!(movie_attributes(title: "Movie 7", released_on: 1.day.from_now))
     end
 
     it "returns a specified number of released movies ordered with the most recent movie first" do
@@ -202,6 +202,28 @@ describe "A movie" do
     it "returns a default of 5 released movies ordered with the most recent movie first" do
       expect(Movie.recent).to eq([@movie6, @movie5, @movie4, @movie3, @movie2])
     end
+  end
+
+  it "generates a slug when it's created" do
+    movie = Movie.create!(movie_attributes(title: "X-Men: The Last Stand"))
+
+    expect(movie.slug).to eq("x-men-the-last-stand")
+  end
+
+  it "requires a unique title" do
+    movie1 = Movie.create!(movie_attributes)
+
+    movie2 = Movie.new(title: movie1.title)
+    movie2.valid?
+    expect(movie2.errors[:title].first).to eq("has already been taken")
+  end
+
+  it "requires a unique slug" do
+    movie1 = Movie.create!(movie_attributes)
+
+    movie2 = Movie.new(slug: movie1.slug)
+    movie2.valid?
+    expect(movie2.errors[:slug].first).to eq("has already been taken")
   end
 end
     
