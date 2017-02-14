@@ -35,7 +35,6 @@ group :production do
 end
 
 group :development, :test do
-
   gem 'byebug',  '9.0.0', platform: :mri
   gem "rspec-rails", "3.5.0.beta3"
 end
