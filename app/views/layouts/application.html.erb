@@ -9,6 +9,11 @@
 
   <body>
     <%= render "layouts/header" %>
+    
+    <% if !current_user %>
+      <p class="log-in-msg">To log in as admin use email: admin@gmail.com password: password1</p>
+      <p id ="last-log-in-msg"class="log-in-msg">To log in as a user use email: user@gmail.com password: password2</p>
+    <% end %>
 
     <%= render 'layouts/flashes' %>
 

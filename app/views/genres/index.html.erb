@@ -2,9 +2,11 @@
 
 <ul>
 <% @genres.each do |genre| %>
-  <li><%= link_to genre.name, genre %>
-      <%= link_to "Edit", edit_genre_path(genre) %> | 
-      <%= link_to "Delete", genre_path(genre), method: :delete %>
+  <li class="genre-list-item"><%= link_to genre.name, genre %>
+      <div class="edit-delete-genre-links">
+        <%= link_to "Edit", edit_genre_path(genre), class: "try" %> | 
+        <%= link_to "Delete", genre_path(genre), method: :delete %>
+      </div>
   </li>
 <% end %>
 </ul>

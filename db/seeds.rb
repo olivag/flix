@@ -96,8 +96,8 @@ Movie.create!([
   }
 ])
 
-user1 = User.create!(name: "Gerald", username: "gerald101", email: "ryumaster001@yahoo.com", password: "12345678", password_confirmation: "12345678", admin: true)
-user2 = User.create!(name: "Heidy", username: "heidy101", email: "heidy@yahoo.com", password: "12345678", password_confirmation: "12345678")
+user1 = User.create!(name: "Admin", username: "admin101", email: "admin@gmail.com", password: "password1", password_confirmation: "password1", admin: true)
+user2 = User.create!(name: "User", username: "user102", email: "user@gmail.com", password: "password2", password_confirmation: "password2")
 
 genre1 = Genre.create!(name: "Action")
 genre2 = Genre.create!(name: "Comedy")
